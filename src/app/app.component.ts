@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   add(pseudo:HTMLInputElement, imageUrl: HTMLInputElement) {
-    this.cService.sauvegarder(new Collegue(pseudo.value,imageUrl.value,0)).then(c => this.collegues.push(c))
+    this.cService.sauvegarder(new Collegue(pseudo.value,imageUrl.value,0)).then(c => (c==null?null:this.collegues.push(c)))
     pseudo.value =''
     imageUrl.value =''
     this.alerte = false

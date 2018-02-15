@@ -11,11 +11,11 @@ constructor(private http:HttpClient) {
 listerCollegues():Promise<Collegue[]> {
   return this.http.get<Collegue[]>('http://localhost:8080/collegues').toPromise()
 }
-sauvegarder(newCollegue:Collegue):Promise<Collegue> {
+sauvegarder(collegue:Collegue):Promise<Collegue> {
   const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  return this.http.post<Collegue>('http://localhost:8080/collegues', newCollegue, httpOptions).toPromise()
+  return this.http.post<Collegue>('http://localhost:8080/collegues', collegue, httpOptions).toPromise()
 }
 aimerUnCollegue(unCollegue:Collegue):Promise<Collegue> {
   let body = { "action" : "aimer" }
