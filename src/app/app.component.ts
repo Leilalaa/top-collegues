@@ -17,17 +17,19 @@ export class AppComponent implements OnInit {
 
   collegues:Collegue[]
   alerte:boolean
+  echec:boolean
   ngOnInit() {
   this.alerte=true
+  this.echec=true
   this.collegues = new Array()
   this.cService.listerCollegues().then(cols => cols.forEach(c => this.collegues.push(c)))
   }
 
   add(pseudo:HTMLInputElement, imageUrl: HTMLInputElement) {
-    this.cService.sauvegarder(new Collegue(pseudo.value,imageUrl.value,0)).then(c => (c==null?null:this.collegues.push(c)))
+
+    this.cService.sauvegarder(new Collegue(pseudo.value,imageUrl.value,0)).then(c => (c==null?(this.echec=false, this.alerte=true):(this.echec=true, this.alerte=false, this.collegues.push(c))))
     pseudo.value =''
     imageUrl.value =''
-    this.alerte = false
     return false; // pour éviter le rechargement de la page
 }
 }
