@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue'
 import { CollegueService } from '../shared/service/collegue.service'
+import { ActionComponent } from './action/action.component'
 
 @Component({
   selector: 'app-carrousel',

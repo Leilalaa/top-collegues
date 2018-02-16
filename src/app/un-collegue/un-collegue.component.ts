@@ -9,6 +9,7 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './un-collegue.component.html',
   styleUrls: ['./un-collegue.component.css']
 })
+
 export class UnCollegueComponent implements OnInit {
 
   nom:string;

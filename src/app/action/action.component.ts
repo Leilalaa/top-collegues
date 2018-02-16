@@ -10,6 +10,7 @@ import { CollegueService } from '../shared/service/collegue.service'
 export class ActionComponent implements OnInit {
 
   @Input() collegue:Collegue;
+  @Input()  outline:boolean;
   constructor(private cService:CollegueService) {
   }
   ngOnInit() {
@@ -22,4 +23,17 @@ export class ActionComponent implements OnInit {
     this.collegue.score-=5
     this.cService.detesterUnCollegue(this.collegue)
   }
+  buttonPrimary():string{
+   if(this.outline){
+     return "btn btn-outline-primary"
+   }else{
+     return "btn btn-primary"
+   }
+ }
+ buttonDanger():string{
+   if(this.outline){
+     return "btn btn-outline-danger"
+   }else{
+     return "btn btn-danger"
+   }
 }

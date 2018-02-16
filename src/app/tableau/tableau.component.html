@@ -14,7 +14,9 @@
         <th scope="row"><a routerLink="/detail/{{collegue.nom}}"><img height="75" width="75" src="{{collegue.imageUrl}}"></a></th>
         <td>{{collegue.nom}}</td>
         <td>{{collegue.score}}</td>
-        <td><app-action [collegue]="collegue"></app-action></td>
+        <td>
+          <app-action [collegue]="collegue" [outline]="true"></app-action>
+        </td>
       </tr>
     </tbody>
   </table>

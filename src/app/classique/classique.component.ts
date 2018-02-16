@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue'
 import { CollegueService } from '../shared/service/collegue.service'
+import { ActionComponent } from './action/action.component'
 
 @Component({
   selector: 'app-classique',
   templateUrl: './classique.component.html',
   styleUrls: ['./classique.component.css']
 })
-export class ClassiqueComponent implements OnInit {
 
+export class ClassiqueComponent implements OnInit {
+  
   collegue:Collegue;
   constructor(private cService:CollegueService) {
   }

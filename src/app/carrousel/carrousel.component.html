@@ -4,8 +4,8 @@
     <ng-template ngbSlide *ngFor="let collegue of collegues">
       <a routerLink="/detail/{{collegue.nom}}"><img class="container justify-content-center" src="{{collegue.imageUrl}}" style="max-height:400px; margin:0 auto;"></a>
       <div class="carousel-caption">
-        <h3>{{collegue.score}}</h3>
-        <p><app-action [collegue]="collegue"></app-action></p>
+        <h1 class="display-1">{{collegue.score}}</h1>
+        <p><app-action [collegue]="collegue" [outline]="false"></app-action></p>
       </div>
     </ng-template>
   </ngb-carousel>
