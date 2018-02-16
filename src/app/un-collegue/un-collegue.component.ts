@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core'
-import { Collegue } from '../shared/domain/collegue'
+import { Component, OnInit} from '@angular/core'
+import { ActivatedRoute} from '@angular/router';
+import { Collegue } from '../shared/domain/collegue';
 import { CollegueService } from '../shared/service/collegue.service'
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-un-collegue',
@@ -8,18 +10,16 @@ import { CollegueService } from '../shared/service/collegue.service'
   styleUrls: ['./un-collegue.component.css']
 })
 export class UnCollegueComponent implements OnInit {
-  // paramètre d'entrée "collegue"
-  @Input() collegue:Collegue;
-  constructor(private cService:CollegueService) {
+
+  nom:string;
+  collegue:Collegue;
+
+  constructor(private route: ActivatedRoute,
+	        private collegueService: CollegueService) {
+    route.params.subscribe(params => { this.nom = params['nom']; });
   }
+
   ngOnInit() {
-  }
-  jaime() {
-    this.collegue.score+=10
-    this.cService.aimerUnCollegue(this.collegue)
-  }
-  jedeteste() {
-    this.collegue.score-=5
-    this.cService.detesterUnCollegue(this.collegue)
+    this.collegueService.detailCollegue(this.nom).then(c => this.collegue = c);
   }
 }

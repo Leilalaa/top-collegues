@@ -1,10 +1,16 @@
-
-<div class="card m-3" style="width: 15rem;">
-  <img class="card-img-top" height="200" width="100" src="{{collegue.imageUrl}}">
-  <div class="card-body" align="center">
-    <h5 class="card-title">{{collegue.nom}}</h5>
-    <p class="card-text">{{collegue.score}}</p>
-    <button type="button" class="btn btn-outline-primary" (click)="jaime()">J'aime</button>
-    <button type="button" class="btn btn-outline-danger" (click)="jedeteste()">Je deteste</button>
+<div class="container justify-content-center">
+<nav class="nav">
+  <a class="nav-link active" routerLink="/classique">Retour sur la liste de collègues</a>
+</nav>
+</div>
+<br />
+<div class="container justify-content-center" [ngClass] = "'un-collegue'">
+  <div class="card m-3 mx-auto" style="width: 40rem;">
+    <img class="card-img-top" height="500" width="400" src="{{collegue.imageUrl}}">
+    <div class="card-body" align="center">
+      <h5 class="card-title">{{collegue.nom}}</h5>
+      <p class="card-text">{{collegue.score}}</p>
+      <app-action [collegue]="collegue"></app-action>
+    </div>
   </div>
 </div>

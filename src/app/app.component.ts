@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router'
 import { Collegue } from './shared/domain/collegue'
 import { CollegueService } from './shared/service/collegue.service'
 import { UnCollegueComponent } from './un-collegue/un-collegue.component'
@@ -12,17 +13,18 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private cService:CollegueService) {
+  constructor(private cService:CollegueService, private ar:Router) {
   }
 
   collegues:Collegue[]
   alerte:boolean
   echec:boolean
+
   ngOnInit() {
-  this.alerte=true
-  this.echec=true
-  this.collegues = new Array()
-  this.cService.listerCollegues().then(cols => cols.forEach(c => this.collegues.push(c)))
+    this.alerte=true
+    this.echec=true
+    this.collegues = new Array()
+    this.cService.listerCollegues().then(cols => cols.forEach(c => this.collegues.push(c)))
   }
 
   add(pseudo:HTMLInputElement, imageUrl: HTMLInputElement) {
@@ -31,5 +33,10 @@ export class AppComponent implements OnInit {
     pseudo.value =''
     imageUrl.value =''
     return false; // pour éviter le rechargement de la page
+}
+
+afficherForm() {
+  // Permet d'afficher un element si la route est égale à un des éléments indiqués dans le tableau si dessous
+  return ['/carrousel', '/classique', '/tableau'].some(a => a == this.ar.url)
 }
 }

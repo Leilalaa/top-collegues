@@ -25,4 +25,8 @@ detesterUnCollegue(unCollegue:Collegue):Promise<Collegue> {
   let body ={ "action" : "detester" }
   return this.http.patch<Collegue>('http://localhost:8080/collegues/'+unCollegue.nom,body).toPromise()
 }
+
+detailCollegue(nom:string):Promise<Collegue> {
+  return this.http.get<Collegue>('http://localhost:8080/collegues/'+nom).toPromise()
+}
 }

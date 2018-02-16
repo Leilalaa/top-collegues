@@ -1,8 +1,7 @@
-
 <div class="container" style="background:#f2f2f2">
-  <h1> Top collègues </h1>
-  <h5>Les meilleurs collègues du moment</h5>
-  <form>
+  <h1 class="display-2"> Top collègues </h1>
+  <p class="lead">Les meilleurs collègues du moment</p>
+  <form *ngIf="afficherForm()">
     <div class="form-group row">
       <label for="pseudo" class="col-sm-2 col-form-label">Pseudo</label>
       <div class="col-sm-10">
@@ -21,15 +20,16 @@
 <br />
 
 <div class="alert alert-success m-5" role="alert" [hidden]="alerte">
-  Le collègue {{collegues[collegues.length - 1].nom}} a été ajouté avec succès
+  Le collègue {{collegues[collegues.length - 1].nom}} a été ajouté avec succès ! Veuillez rafraichir la page
 </div>
 <div class="alert alert-danger m-5" role="alert" [hidden]="echec">
-  Ce collègue existe déjà !
+  Ce collègue existe déjà ! Veuillez rafraichir la page
 </div>
 
-<div class="container">
-  <div class="row">
-    <div *ngFor="let value of collegues">
-    <app-un-collegue [collegue]="value"></app-un-collegue>
-  </div>
-</div>
+<nav *ngIf="afficherForm()" class="nav nav-pills flex-column flex-sm-row justify-content-center">
+  <a class="flex-sm-fill text-sm-center nav-link " routerLink="/classique" routerLinkActive="active">Classique</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/tableau"  routerLinkActive="active">Tableau</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/carrousel"  routerLinkActive="active">Carrousel</a>
+</nav>
+
+<router-outlet></router-outlet>
