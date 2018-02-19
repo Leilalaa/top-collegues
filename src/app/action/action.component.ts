@@ -37,3 +37,4 @@ export class ActionComponent implements OnInit {
      return "btn btn-danger"
    }
 }
+}

@@ -33,10 +33,12 @@ export class AppComponent implements OnInit {
     pseudo.value =''
     imageUrl.value =''
     return false; // pour éviter le rechargement de la page
-}
+  }
 
-afficherForm() {
-  // Permet d'afficher un element si la route est égale à un des éléments indiqués dans le tableau si dessous
-  return ['/carrousel', '/classique', '/tableau'].some(a => a == this.ar.url)
-}
+  afficherForm() {
+    // Permet d'afficher un element si la route est égale à un des éléments indiqués dans le tableau si dessous
+    return ['/carrousel', '/classique', '/tableau'].some(a => a == this.ar.url)
+  }
+
+  
 }
