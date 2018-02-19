@@ -12,6 +12,7 @@ import { TableauComponent } from './tableau/tableau.component';
 import { CarrouselComponent } from './carrousel/carrousel.component';
 import { ScorePipe } from './shared/pipe/score.pipe';
 import { CherchePseudoPipe } from './shared/pipe/cherche-pseudo.pipe';
+import { TriScorePipe } from './shared/pipe/tri-score.pipe';
 
  const appRoutes: Routes = [
  { path: 'classique', component: ClassiqueComponent },
@@ -30,7 +31,8 @@ import { CherchePseudoPipe } from './shared/pipe/cherche-pseudo.pipe';
     TableauComponent,
     CarrouselComponent,
     ScorePipe,
-    CherchePseudoPipe
+    CherchePseudoPipe,
+    TriScorePipe
   ],
   imports: [
     BrowserModule,

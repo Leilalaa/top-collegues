@@ -21,7 +21,7 @@ export class ClassiqueComponent implements OnInit {
   collegues:Collegue[]
   ngOnInit() {
     this.collegues = new Array()
-    this.cService.listerCollegues().then(cols => cols.forEach(c => this.collegues.push(c)))
+    this.cService.listerCollegues().then(cols => this.collegues = cols)
   }
 
   setLimite(limite:HTMLInputElement){

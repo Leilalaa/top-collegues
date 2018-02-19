@@ -27,7 +27,7 @@
 
 <div class="container">
   <div class="row">
-    <div *ngFor="let collegue of collegues | cherchePseudo:nomCherche | slice:0:limiteDef">
+    <div *ngFor="let collegue of collegues | cherchePseudo:nomCherche | triScore | slice:0:limiteDef">
       <div class="card m-3" style="width: 15rem;">
         <a routerLink="/detail/{{collegue.nom}}"><img class="card-img-top" height="200" width="100" src="{{collegue.imageUrl}}"></a>
         <div class="card-body" align="center">

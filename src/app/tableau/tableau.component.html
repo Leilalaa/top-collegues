@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let collegue of collegues">
+      <tr *ngFor="let collegue of collegues | triScore">
         <th scope="row"><a routerLink="/detail/{{collegue.nom}}"><img height="75" width="75" src="{{collegue.imageUrl}}"></a></th>
         <td>{{collegue.nom | uppercase}}</td>
         <td><p [innerHTML]= "collegue.score | score"></p></td>
