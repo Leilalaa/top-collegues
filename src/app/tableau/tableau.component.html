@@ -1,4 +1,30 @@
 <br/>
+<br />
+<div class="container">
+  <form>
+      <label for="limite" class="sr-only">Limite</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Limite</div>
+        </div>
+        <input type="text" class="form-control" value="8" id="limite" placeholder="Limiter le nombre maximum de collègues affichés" (keyup)="setLimite(limite)" #limite>
+      </div>
+  </form>
+  <br />
+</div>
+<div class="container">
+  <form>
+      <label for="trinom" class="sr-only">Filtrer par pseudo</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Filtrer par pseudo</div>
+        </div>
+        <input type="text" class="form-control" (keyup)="cherchePseudo(trinom)" id="trinom" #trinom>
+      </div>
+  </form>
+  <br />
+</div>
+<br />
 <div class="container justify-content-center">
   <table class="table justify-content-center">
     <thead>
@@ -10,7 +36,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let collegue of collegues | triScore">
+      <tr *ngFor="let collegue of collegues | cherchePseudo:nomCherche | triScore | slice:0:limiteDef">
         <th scope="row"><a routerLink="/detail/{{collegue.nom}}"><img height="75" width="75" src="{{collegue.imageUrl}}"></a></th>
         <td>{{collegue.nom | uppercase}}</td>
         <td><p [innerHTML]= "collegue.score | score"></p></td>

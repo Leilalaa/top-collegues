@@ -10,6 +10,8 @@ import { ActionComponent } from './action/action.component'
 })
 
 export class TableauComponent implements OnInit {
+  nomCherche:string=""
+  limiteDef:number = "8"
   collegue:Collegue;
   constructor(private cService:CollegueService) {
   }
@@ -17,6 +19,16 @@ export class TableauComponent implements OnInit {
   ngOnInit() {
     this.collegues = new Array()
       this.cService.listerCollegues().then(cols => this.collegues = cols)
+  }
+
+  setLimite(limite:HTMLInputElement){
+    this.limiteDef=Number.parseInt(limite.value);
+    return false;
+  }
+
+  cherchePseudo(trinom:HTMLInputElement){
+    this.nomCherche=trinom.value;
+    return false;
   }
 
 }
