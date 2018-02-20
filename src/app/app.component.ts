@@ -4,6 +4,7 @@ import { Collegue } from './shared/domain/collegue'
 import { CollegueService } from './shared/service/collegue.service'
 import { UnCollegueComponent } from './un-collegue/un-collegue.component'
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import {Observable, Subject} from 'rxjs';
 
 
 @Component({
@@ -25,6 +26,8 @@ export class AppComponent implements OnInit {
     this.echec=true
     this.collegues = new Array()
     this.cService.listerCollegues().then(cols => cols.forEach(c => this.collegues.push(c)))
+    this.cService.getCollegueSaveObs().subscribe(c => this.collegues.push(c))
+
   }
 
   add(pseudo:HTMLInputElement, imageUrl: HTMLInputElement) {
@@ -40,5 +43,5 @@ export class AppComponent implements OnInit {
     return ['/carrousel', '/classique', '/tableau'].some(a => a == this.ar.url)
   }
 
-  
+
 }

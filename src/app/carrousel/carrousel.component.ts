@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue'
 import { CollegueService } from '../shared/service/collegue.service'
-import { ActionComponent } from './action/action.component'
+import { ActionComponent } from '../action/action.component'
+import {Observable, Subject} from 'rxjs';
 
 @Component({
   selector: 'app-carrousel',
@@ -16,7 +17,8 @@ export class CarrouselComponent implements OnInit {
   collegues:Collegue[]
   ngOnInit() {
     this.collegues = new Array()
-    this.cService.listerCollegues().then(cols => cols.forEach(c => this.collegues.push(c)))
+    this.cService.listerCollegues().then(cols => this.collegues = cols)
+    this.cService.getCollegueSaveObs().subscribe(c => this.collegues.push(c))
   }
 
 }

@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Collegue } from '../domain/collegue';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable()
 export class CollegueService {
+
+private collegueSaveSub: Subject<Collegue> = new Subject();
+getCollegueSaveObs(): Observable<Collegue>{
+  return this.collegueSaveSub.asObservable();
+}
 
 constructor(private http:HttpClient) {
 }
@@ -15,6 +21,8 @@ sauvegarder(collegue:Collegue):Promise<Collegue> {
   const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  
+  this.collegueSaveSub.next(collegue);
   return this.http.post<Collegue>('http://localhost:8080/collegues', collegue, httpOptions).toPromise()
 }
 aimerUnCollegue(unCollegue:Collegue):Promise<Collegue> {

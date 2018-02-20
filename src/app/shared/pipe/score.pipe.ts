@@ -14,7 +14,7 @@ export class ScorePipe implements PipeTransform {
     }else{
       return "<span>"+value+"</span>";
     }
-    ]
+    
   }
 
 }
