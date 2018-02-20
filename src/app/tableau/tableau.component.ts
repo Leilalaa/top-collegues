@@ -12,15 +12,15 @@ import {Observable, Subject} from 'rxjs';
 
 export class TableauComponent implements OnInit {
   nomCherche:string=""
-  limiteDef:number = 8
+  limiteDef:number = 20
   collegue:Collegue;
   constructor(private cService:CollegueService) {
   }
   collegues:Collegue[]
   ngOnInit() {
     this.collegues = new Array()
-      this.cService.listerCollegues().then(cols => this.collegues = cols)
-      this.cService.getCollegueSaveObs().subscribe(c => this.collegues.push(c))
+      this.cService.listerCollegues().subscribe(cols => this.collegues = cols)
+      this.cService.CollegueSaveObs.subscribe(c => this.collegues.push(c))
   }
 
   setLimite(limite:HTMLInputElement){

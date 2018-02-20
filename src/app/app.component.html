@@ -1,4 +1,6 @@
 <div class="container" style="background:#f2f2f2">
+  <span class="badge badge-pill badge-primary float-right">En ligne</span>
+  <span class="badge badge-pill badge-danger float-right">Hors-ligne</span>
   <h1 class="display-2"> Top collègues </h1>
   <p class="lead">Les meilleurs collègues du moment</p>
   <form *ngIf="afficherForm()">
@@ -24,7 +26,7 @@
 <div class="alert alert-danger m-5" role="alert" [hidden]="echec">
   Ce collègue existe déjà !
 </div>
-
+<app-votre-dernier-avis></app-votre-dernier-avis>
 <nav *ngIf="afficherForm()" class="nav nav-pills flex-column flex-sm-row justify-content-center">
   <a class="flex-sm-fill text-sm-center nav-link " routerLink="/classique" routerLinkActive="active">Classique</a>
   <a class="flex-sm-fill text-sm-center nav-link" routerLink="/tableau"  routerLinkActive="active">Tableau</a>
@@ -32,3 +34,4 @@
 </nav>
 
 <router-outlet></router-outlet>
+<app-votre-dernier-avis></app-votre-dernier-avis>

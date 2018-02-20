@@ -13,6 +13,7 @@ import { CarrouselComponent } from './carrousel/carrousel.component';
 import { ScorePipe } from './shared/pipe/score.pipe';
 import { CherchePseudoPipe } from './shared/pipe/cherche-pseudo.pipe';
 import { TriScorePipe } from './shared/pipe/tri-score.pipe';
+import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-avis.component';
 
  const appRoutes: Routes = [
  { path: 'classique', component: ClassiqueComponent },
@@ -32,7 +33,8 @@ import { TriScorePipe } from './shared/pipe/tri-score.pipe';
     CarrouselComponent,
     ScorePipe,
     CherchePseudoPipe,
-    TriScorePipe
+    TriScorePipe,
+    VotreDernierAvisComponent
   ],
   imports: [
     BrowserModule,

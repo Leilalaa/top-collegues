@@ -3,7 +3,8 @@ import { Collegue } from '../shared/domain/collegue'
 import { CollegueService } from '../shared/service/collegue.service'
 import { ScorePipe } from '../shared/pipe/score.pipe'
 import { ActionComponent } from '../action/action.component'
-import {Observable, Subject} from 'rxjs';
+import {Observable} from 'rxjs';
+import { Subject } from "rxjs/Subject";
 
 @Component({
   selector: 'app-classique',
@@ -14,7 +15,7 @@ import {Observable, Subject} from 'rxjs';
 export class ClassiqueComponent implements OnInit {
 
   nomCherche:string=""
-  limiteDef:number = 8
+  limiteDef:number = 20
   collegue:Collegue;
   constructor(private cService:CollegueService) {
   }
@@ -22,8 +23,8 @@ export class ClassiqueComponent implements OnInit {
   collegues:Collegue[]
   ngOnInit() {
     this.collegues = new Array()
-    this.cService.listerCollegues().then(cols => this.collegues = cols)
-    this.cService.getCollegueSaveObs().subscribe(c => this.collegues.push(c))
+    this.cService.listerCollegues().subscribe(cols => this.collegues = cols)
+    this.cService.CollegueSaveObs.subscribe(c => this.collegues.push(c))
   }
 
   setLimite(limite:HTMLInputElement){

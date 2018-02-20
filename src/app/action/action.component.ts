@@ -11,30 +11,36 @@ export class ActionComponent implements OnInit {
 
   @Input() collegue:Collegue;
   @Input()  outline:boolean;
+
   constructor(private cService:CollegueService) {
   }
+
   ngOnInit() {
   }
+
   jaime() {
-    this.collegue.score+=10
-    this.cService.aimerUnCollegue(this.collegue)
+    this.cService.aimerUnCollegue(this.collegue).subscribe(c => this.collegue.score = c.score)
+    return false;
   }
+
   jedeteste() {
-    this.collegue.score-=5
-    this.cService.detesterUnCollegue(this.collegue)
+    this.cService.detesterUnCollegue(this.collegue).subscribe(c => this.collegue.score = c.score)
+    return false;
   }
+
   buttonPrimary():string{
    if(this.outline){
      return "btn btn-outline-primary"
    }else{
      return "btn btn-primary"
    }
- }
- buttonDanger():string{
+  }
+  
+  buttonDanger():string{
    if(this.outline){
      return "btn btn-outline-danger"
    }else{
      return "btn btn-danger"
    }
-}
+  }
 }
