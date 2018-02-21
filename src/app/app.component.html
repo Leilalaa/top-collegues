@@ -1,6 +1,5 @@
 <div class="container" style="background:#f2f2f2">
-  <span class="badge badge-pill badge-primary float-right">En ligne</span>
-  <span class="badge badge-pill badge-danger float-right">Hors-ligne</span>
+  <span class="{{statusClass}} float-right">{{status}}</span>
   <h1 class="display-2"> Top collègues </h1>
   <p class="lead">Les meilleurs collègues du moment</p>
   <form *ngIf="afficherForm()">

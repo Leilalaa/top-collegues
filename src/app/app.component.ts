@@ -15,12 +15,25 @@ import { Subject } from "rxjs/Subject";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private cService:CollegueService, private ar:Router) {
-  }
-
   collegues:Collegue[]
   alerte:boolean
   echec:boolean
+  ligne:boolean = true
+  hors:boolean =true
+  online: Observable<boolean>;
+  status:string
+  statusClass:string
+  disable:boolean
+
+  constructor(private cService:CollegueService, private ar:Router) {
+    this.online = Observable.merge(
+     Observable.of(navigator.onLine),
+     Observable.fromEvent(window, 'online').mapTo(true),
+     Observable.fromEvent(window, 'offline').mapTo(false)
+   )
+  }
+
+
 
   ngOnInit() {
     this.alerte=true
@@ -28,8 +41,17 @@ export class AppComponent implements OnInit {
     this.collegues = new Array()
     this.cService.listerCollegues().subscribe(cols => this.collegues = cols)
     this.cService.CollegueSaveObs.subscribe(c => this.collegues.push(c))
-
+    this.online.subscribe( e => { (e)
+      ?(this.status="online"
+      ,this.statusClass="badge badge-pill badge-primary"
+      ,this.disable = false)
+      :(this.status="offline"
+      ,this.statusClass="badge badge-pill badge-danger"
+      ,this.disable = true)
+    })
   }
+
+
 
   add(pseudo:HTMLInputElement, imageUrl: HTMLInputElement) {
 
