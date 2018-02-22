@@ -55,7 +55,9 @@ export class AppComponent implements OnInit {
 
   add(pseudo:HTMLInputElement, imageUrl: HTMLInputElement) {
 
-    this.cService.sauvegarder(new Collegue(pseudo.value,imageUrl.value,0)).subscribe(c => (c==null?(this.echec=false, this.alerte=true):(this.echec=true, this.alerte=false, this.collegues.push(c))))
+    this.cService.sauvegarder(new Collegue(pseudo.value,imageUrl.value,0))
+    .subscribe(c => (this.echec=true, this.alerte=false, this.collegues.push(c)),
+              () => (this.echec=false, this.alerte=true));
     pseudo.value =''
     imageUrl.value =''
     return false; // pour éviter le rechargement de la page

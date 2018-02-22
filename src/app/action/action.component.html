@@ -1,2 +1,26 @@
-<button type="button" [class]='buttonPrimary()' (click)="jaime()">J'aime</button>
-<button type="button" [class]='buttonDanger()' (click)="jedeteste()">Je deteste</button>
+<button type="button" [class]='buttonPrimary()' (click)="jaime()" [disabled]="disable">J'aime</button>
+<button type="button" [class]='buttonDanger()' (click)="jedeteste()" [disabled]="disable">Je deteste</button>
+<button type="button" [class]='buttonSuccess()' [disabled]="disable" (click)="open(content)">Rédiger un commentaire</button>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Rédiger un commentaire</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form (ngSubmit)="submit(commentaire.value)" (submit)="d('sauvegardé')" #commentaire>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="com"><strong>Que pensez vous de {{collegue.nom}} ?</strong></label>
+
+      <textarea class="form-control" id="com" rows="5" [(ngModel)]="commentModel.commentaire" name="comment"></textarea>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </div>
+  </form>
+</ng-template>
+<hr>

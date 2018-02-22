@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { UnCollegueComponent } from './un-collegue/un-collegue.component';
 import { CollegueService } from './shared/service/collegue.service';
@@ -14,6 +15,7 @@ import { ScorePipe } from './shared/pipe/score.pipe';
 import { CherchePseudoPipe } from './shared/pipe/cherche-pseudo.pipe';
 import { TriScorePipe } from './shared/pipe/tri-score.pipe';
 import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-avis.component';
+import { HistoriqueComponent } from './historique/historique.component';
 
  const appRoutes: Routes = [
  { path: 'classique', component: ClassiqueComponent },
@@ -34,10 +36,12 @@ import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-av
     ScorePipe,
     CherchePseudoPipe,
     TriScorePipe,
-    VotreDernierAvisComponent
+    VotreDernierAvisComponent,
+    HistoriqueComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot()

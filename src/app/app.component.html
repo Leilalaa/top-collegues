@@ -15,12 +15,12 @@
         <input type="text" class="form-control" id="imageURL" placeholder="URL Image" #imageUrl>
       </div>
     </div>
-     <button class="btn btn-primary mb-2" (click)="add(pseudo, imageUrl)">Ajouter un nouveau collègue</button>
+     <button class="btn btn-primary mb-2" (click)="add(pseudo, imageUrl)" [disabled]="disable">Ajouter un nouveau collègue</button>
   </form>
 </div>
 <br />
 <div class="alert alert-success m-5" role="alert" [hidden]="alerte">
-  Le collègue {{collegues[collegues.length - 1].nom}} a été ajouté avec succès !
+  Le collègue {{collegues[collegues.length - 1]?.nom}} a été ajouté avec succès !
 </div>
 <div class="alert alert-danger m-5" role="alert" [hidden]="echec">
   Ce collègue existe déjà !
